@@ -1,0 +1,21 @@
+{
+  "extends": "../../packages/tsconfig/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDirs": [".", "./.react-router/types"],
+    "types": ["@cloudflare/workers-types", "vite/client"],
+    "paths": {
+      "~/*": ["./app/*"],
+      "@workspace/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": [
+    ".react-router/types/**/*",
+    "app/**/*",
+    "app/**/.server/**/*",
+    "app/**/.client/**/*",
+    "workers/**/*",
+    "worker-configuration.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}

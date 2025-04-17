@@ -1,0 +1,26 @@
+{
+  "name": "react-router-v7-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --stream dev",
+    "dev:web": "pnpm --filter web dev",
+    "start": "pnpm -r --stream start",
+    "start:web": "pnpm --filter web start",
+    "check": "biome check .",
+    "check:fix": "biome check --fix .",
+    "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf node_modules && rm pnpm-lock.yaml",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "lefthook": "^1.5.5",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.14.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

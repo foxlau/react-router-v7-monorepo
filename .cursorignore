@@ -1,0 +1,24 @@
+# Directories
+node_modules/
+dist/
+build/
+drizzle/
+.turbo/
+.wrangler/
+.drizzle/
+.react-router/
+.husky/
+.vscode/
+
+# Files
+LICENSE
+pnpm-lock.yaml
+package-lock.json
+wrangler.toml
+wrangler.jsonc
+.cursorrules
+.cursorignore
+.gitignore
+.env
+.env.*
+.dev.*

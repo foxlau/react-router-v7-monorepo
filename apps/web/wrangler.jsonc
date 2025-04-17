@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rr7-monorepo-web",
+  "main": "./workers/app.ts",
+
+  "compatibility_date": "2025-04-04",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_compat_populate_process_env"
+  ],
+
+  // Configures automatic observability settings for telemetry data emitted from your Worker.
+  "observability": {
+    "enabled": true
+  },
+
+  // Environment Variables.
+  "vars": {
+    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
+  },
+
+  // For remote preview deployment.
+  "env": {
+    "preview": {
+      "vars": {
+        "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare (Preview)"
+      }
+    }
+  }
+}
