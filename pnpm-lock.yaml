@@ -55,7 +55,7 @@ importers:
         specifier: ^4.0.0
         version: 4.1.4(vite@6.3.1)
       '@types/node':
-        specifier: ^20
+        specifier: ^20.17.30
         version: 20.17.30
       '@types/react':
         specifier: ^19.0.1

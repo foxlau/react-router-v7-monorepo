@@ -3,7 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types"],
-    "types": ["@cloudflare/workers-types", "vite/client"],
+    "types": [
+      "@cloudflare/workers-types",
+      "vite/client",
+      "node",
+      "./worker-configuration.d.ts"
+    ],
     "paths": {
       "~/*": ["./app/*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"]
@@ -14,8 +19,7 @@
     "app/**/*",
     "app/**/.server/**/*",
     "app/**/.client/**/*",
-    "workers/**/*",
-    "worker-configuration.d.ts"
+    "workers/**/*"
   ],
   "exclude": ["node_modules"]
 }
