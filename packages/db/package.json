@@ -1,0 +1,27 @@
+{
+  "name": "@workspace/db",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "db:drop": "drizzle-kit drop",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:apply": "wrangler d1 migrations apply DB --local --persist-to=../../.wrangler/state",
+    "db:apply-prod": "wrangler d1 migrations apply DB --remote",
+    "db:apply-preview": "wrangler d1 migrations apply DB --remote --env preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "~0.40.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "drizzle-kit": "~0.31.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.7.2"
+  }
+}
