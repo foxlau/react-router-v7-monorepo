@@ -1,6 +1,6 @@
 # @workspace/ui
 
-A collection of reusable UI components for Frontree projects, built with Radix UI and styled with Tailwind CSS.
+A collection of reusable UI components for Frontree projects, built with Radix UI, styled with Tailwind CSS, and powered by [shadcn/ui](https://ui.shadcn.com/).
 
 ## Installation
 
@@ -13,6 +13,25 @@ Since this is a workspace package, you can reference it directly in your project
   }
 }
 ```
+
+## Add components to your project
+
+To add components to your project, run the add command in the path of your app.
+
+```sh
+cd apps/web
+pnpm dlx shadcn@canary add [COMPONENT]
+```
+
+The CLI will detect the type of component and install the correct files to the correct path.
+
+For example:
+
+- `pnpm dlx shadcn@canary add button`
+  Installs the button component under `packages/ui` and updates the import path for components in `apps/web`.
+
+- `pnpm dlx shadcn@canary add login-01`
+  Installs the button, label, input, and card components under `packages/ui`, and the login-form component under `apps/web/components`.
 
 ## Usage
 
