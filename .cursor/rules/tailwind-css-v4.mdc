@@ -1,12 +1,8 @@
 ---
-description: 
-globs: ["**/*.{js,ts,jsx,tsx,mdx,css}"]
-alwaysApply: false
----
----
 name: tailwind_v4
 description: Guide for using Tailwind CSS v4 instead of v3.x
 globs: ["**/*.{js,ts,jsx,tsx,mdx,css}"]
+alwaysApply: false
 author: danhollick
 tags:
   - tailwind
@@ -71,7 +67,7 @@ tags:
     - `--aspect-*` : Aspect ratio utilities like `aspect-video`
     - `--ease-*` : Transition timing function utilities like `ease-out`
     - `--animate-*` : Animation utilities like `animate-spin`
-  
+
 
 - **Simplified theme configuration**: Many utilities no longer need theme configuration
   - Utilities like `grid-cols-12`, `z-40`, and `opacity-70` work without configuration
@@ -174,7 +170,7 @@ tags:
 - **Syntax changes**:
   - CSS variables in arbitrary values: `bg-(--brand-color)` instead of `bg-[--brand-color]`
   - Stacked variants now apply left-to-right (not right-to-left)
-  - Use CSS variables instead of `theme()` function 
+  - Use CSS variables instead of `theme()` function
 
 ## Advanced Configuration
 
@@ -215,7 +211,7 @@ tags:
     @import "../../my-theme.css" theme(reference);
     /* or */
     @import "tailwindcss/theme" theme(reference);
-    
+
     h1 {
       @apply font-bold text-2xl text-red-500;
     }

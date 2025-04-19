@@ -1,11 +1,6 @@
 ---
-description: 
-globs: 
-alwaysApply: true
----
----
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
 
