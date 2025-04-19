@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "rr7-monorepo-web",
+  "name": "rrv7-monorepo-web",
   "main": "./workers/app.ts",
 
   "compatibility_date": "2025-04-04",
@@ -13,6 +13,16 @@
   "observability": {
     "enabled": true
   },
+
+  // D1 databases configuration.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rrv7-monorepo",
+      "database_id": "d1_db_id",
+      "preview_database_id": "d1_db_preview_id"
+    }
+  ],
 
   // Environment Variables.
   "vars": {

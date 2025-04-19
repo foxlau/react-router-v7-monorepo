@@ -10,6 +10,18 @@
   --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
+:root {
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+  --ring: var(--color-blue-400);
+}
+
+.dark {
+  --primary: var(--color-blue-500);
+  --primary-foreground: var(--color-blue-50);
+  --ring: var(--color-blue-400);
+}
+
 @layer base {
   body {
     @apply bg-background text-foreground text-sm antialiased;

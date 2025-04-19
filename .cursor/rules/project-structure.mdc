@@ -46,6 +46,7 @@ All reusable libraries and tools are placed in the `packages/` directory:
 
 ```
 packages/
+├── db/                    # Drizzle ORM + Cloudflare D1
 ├── ui/                    # shadcn/ui
 └── tsconfig/              # TS configuration presets
 ```

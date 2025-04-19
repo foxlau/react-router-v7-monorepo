@@ -7,6 +7,8 @@
 - Vite.js – Build tool
 - Lefthook – Git hooks manager
 - Wrangler – Cloudflare development CLI
+- Drizzle ORM – SQL-first ORM
+- Cloudflare D1 – SQLite database for Cloudflare Workers
 
 ## Project Structure
 
@@ -21,6 +23,7 @@ react-router-v7-monorepo/
 │       ├── workers/       # Cloudflare workers
 │       └── ...            # App configs & scripts
 ├── packages/              # Shared packages
+│   ├── db/                # Drizzle ORM + Cloudflare D1 database
 │   ├── ui/                # shadcn/ui-based reusable UI components
 │   └── tsconfig/          # Centralized TypeScript config presets
 ├── .cursor/               # Cursor editor config & code style rules
@@ -64,10 +67,38 @@ pnpm build
 pnpm --filter web build
 ```
 
-### Deployment
+## Database & Deployment
+
+The project uses Drizzle ORM with Cloudflare D1 (SQLite) for database operations and Wrangler CLI for deployment.
+
+### Database Setup & Management
+
 ```bash
-# Deploy web app to Cloudflare
-pnpm --filter web wrangler:deploy
+# Create a new D1 database
+npx wrangler d1 create rrv7-monorepo
+
+# Generate migration files from schema changes
+pnpm db:generate
+
+# Apply migrations locally
+pnpm db:apply
+
+# Drop all tables (caution!)
+pnpm db:drop
+```
+
+### Deployment
+
+```bash
+# Apply migrations and deploy to production
+pnpm db:apply-prod
+pnpm deploy
+
+# Deploy a preview version for testing
+pnpm deploy:version
+
+# Promote a version to production
+pnpm deploy:promote
 ```
 
 ## Code Quality & Workflow

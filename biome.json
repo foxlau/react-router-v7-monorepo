@@ -3,6 +3,7 @@
   "files": {
     "ignore": [
       "drizzle/**/*",
+      "migrations/**/*",
       "**/node_modules/**/*",
       "**/dist/**/*",
       "**/build/**/*",

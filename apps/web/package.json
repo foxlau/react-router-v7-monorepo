@@ -10,16 +10,22 @@
     "deploy:preview": "react-router build && NODE_ENV=preview wrangler deploy --env preview",
     "deploy:version": "react-router build && wrangler versions upload",
     "deploy:promote": "wrangler versions deploy",
-    "start": "wrangler dev",
-    "cf-typegen": "wrangler types --include-runtime=false",
-    "typecheck": "npm run cf-typegen && react-router typegen && tsc --noEmit"
+    "start": "wrangler dev --persist-to=../../.wrangler/state",
+    "typegen": "wrangler types --include-runtime=false && react-router typegen",
+    "typecheck": "npm run typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@conform-to/react": "^1.4.0",
+    "@conform-to/zod": "^1.4.0",
     "@workspace/ui": "workspace:*",
+    "@workspace/db": "workspace:*",
+    "drizzle-orm": "~0.40.1",
     "isbot": "^5.1.17",
+    "lucide-react": "^0.477.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router": "^7.5.0"
+    "react-router": "^7.5.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.0.0",
@@ -29,7 +35,6 @@
     "@types/node": "^20.17.30",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
-    "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",
     "vite": "^6.2.1",
     "vite-tsconfig-paths": "^5.1.4",

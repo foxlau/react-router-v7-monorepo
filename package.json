@@ -7,10 +7,16 @@
     "dev:web": "pnpm --filter web dev",
     "start": "pnpm -r --stream start",
     "start:web": "pnpm --filter web start",
+    "db:drop": "pnpm --filter @workspace/db db:drop",
+    "db:generate": "pnpm --filter @workspace/db db:generate",
+    "db:apply": "pnpm --filter @workspace/db db:apply",
+    "db:apply-prod": "pnpm --filter @workspace/db db:apply-prod",
+    "db:apply-preview": "pnpm --filter @workspace/db db:apply-preview",
+    "typegen": "pnpm -r typegen",
+    "typecheck": "pnpm -r typecheck",
     "check": "biome check .",
     "check:fix": "biome check --fix .",
-    "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf node_modules && rm pnpm-lock.yaml",
-    "typecheck": "pnpm -r typecheck"
+    "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf node_modules && rm pnpm-lock.yaml"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
