@@ -3,6 +3,7 @@ node_modules/
 dist/
 build/
 drizzle/
+migrations/
 .turbo/
 .wrangler/
 .drizzle/
