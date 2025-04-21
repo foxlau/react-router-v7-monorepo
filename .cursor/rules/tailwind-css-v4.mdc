@@ -1,14 +1,8 @@
 ---
-name: tailwind_v4
 description: Guide for using Tailwind CSS v4 instead of v3.x
 globs: ["**/*.{js,ts,jsx,tsx,mdx,css}"]
 alwaysApply: false
-author: danhollick
-tags:
-  - tailwind
-  - css
 ---
-
 # Tailwind CSS v4
 
 ## Core Changes

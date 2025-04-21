@@ -1,9 +1,8 @@
 ---
-description:
-globs:
-alwaysApply: true
+description: 
+globs: 
+alwaysApply: false
 ---
-
 # Project Structure Specification
 
 The React-router-v7-monorepo project follows the directory structure specification below to ensure clear code organization and defined responsibilities.
@@ -39,6 +38,21 @@ apps/
 
 All reusable libraries and tools are placed in the `packages/` directory:
 
+```
+packages/
+├── db/                    # Drizzle ORM + Cloudflare D1
+├── shared/                # Common utilities, hooks, and assets
+│   ├── src/               # Source code
+│   │   ├── assets/        # Shared static assets
+│   │   ├── config/        # Configuration files
+│   │   ├── constants/     # Constant values
+│   │   ├── hooks/         # React hooks
+│   │   ├── types/         # TypeScript type definitions
+│   │   └── utils/         # Utility functions
+│   ├── package.json       # Package configuration
+│   └── tsconfig.json      # TypeScript configuration
+├── ui/                    # shadcn/ui
+└── tsconfig/              # TS configuration presets
 ```
 packages/
 ├── db/                    # Drizzle ORM + Cloudflare D1
