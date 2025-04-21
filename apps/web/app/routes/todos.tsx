@@ -7,6 +7,7 @@ import { Form, Link, data, useFetcher, useNavigation } from "react-router";
 import { z } from "zod";
 
 import { type SelectTodo, todosTable } from "@workspace/db";
+import { formatDate } from "@workspace/shared/utils";
 import { Button, buttonVariants } from "@workspace/ui/components/button";
 import { Checkbox } from "@workspace/ui/components/checkbox";
 import { Input } from "@workspace/ui/components/input";
@@ -102,10 +103,15 @@ export default function TodosRoute({
       </div>
       <div className="mx-auto max-w-2xl space-y-6 p-6 sm:space-y-12 sm:p-12">
         <div className="space-y-6">
-          <h1 className="flex items-center gap-2 font-semibold text-lg leading-none">
-            <ListTodoIcon className="size-5 opacity-60" />
-            Todo List
-          </h1>
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2 font-semibold text-lg leading-none">
+              <ListTodoIcon className="size-5 opacity-60" />
+              Todo List
+            </h1>
+            <div className="text-muted-foreground text-sm">
+              Today is {formatDate(new Date(), "MMMM d, yyyy")}
+            </div>
+          </div>
 
           {/* Form */}
           <Form method="POST" className="space-y-2" {...getFormProps(form)}>
@@ -154,6 +160,7 @@ function TodoItem({ todo }: { todo: SelectTodo }) {
   const fetcher = useFetcher();
   const [isChecked, setIsChecked] = useState(todo.completed);
   const isSubmitting = fetcher.state !== "idle";
+  const id = todo.id.toString();
 
   return (
     <li
@@ -162,7 +169,8 @@ function TodoItem({ todo }: { todo: SelectTodo }) {
     >
       <label htmlFor={todo.id.toString()} className="flex items-center gap-2">
         <Checkbox
-          id={todo.id.toString()}
+          id={id}
+          name={id}
           disabled={isSubmitting}
           checked={isChecked}
           onCheckedChange={() => {
@@ -170,7 +178,7 @@ function TodoItem({ todo }: { todo: SelectTodo }) {
             fetcher.submit(
               {
                 intent: "toggleTodo",
-                id: todo.id.toString(),
+                id,
               },
               { method: "POST", preventScrollReset: true },
             );
@@ -196,7 +204,7 @@ function TodoItem({ todo }: { todo: SelectTodo }) {
           fetcher.submit(
             {
               intent: "deleteTodo",
-              id: todo.id.toString(),
+              id,
             },
             { method: "POST", preventScrollReset: true },
           );

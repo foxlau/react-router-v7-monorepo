@@ -7,6 +7,8 @@ import {
   isRouteErrorResponse,
 } from "react-router";
 
+import { useNonce } from "@workspace/shared/hooks";
+
 import type { Route } from "./+types/root";
 import "./styles/app.css";
 
@@ -28,6 +30,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const nonce = useNonce();
+
   return (
     <html lang="en">
       <head>
@@ -38,8 +42,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <ScrollRestoration />
-        <Scripts />
+        <ScrollRestoration nonce={nonce} />
+        <Scripts nonce={nonce} />
       </body>
     </html>
   );

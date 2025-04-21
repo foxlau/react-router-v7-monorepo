@@ -1,7 +1,13 @@
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
-import type { AppLoadContext, EntryContext } from "react-router";
+import type {
+  AppLoadContext,
+  EntryContext,
+  HandleErrorFunction,
+} from "react-router";
 import { ServerRouter } from "react-router";
+
+import { NonceProvider } from "@workspace/shared/hooks";
 
 export default async function handleRequest(
   request: Request,
@@ -13,8 +19,20 @@ export default async function handleRequest(
   let shellRendered = false;
   const userAgent = request.headers.get("user-agent");
 
+  // Set a random nonce for CSP.
+  const nonce = crypto.randomUUID() ?? undefined;
+
+  // Set CSP headers to prevent 'Prop nonce did not match' error
+  // Without this, browser security policy will clear the nonce attribute on the client side
+  responseHeaders.set(
+    "Content-Security-Policy",
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'; object-src 'none'; base-uri 'none';`,
+  );
+
   const body = await renderToReadableStream(
-    <ServerRouter context={routerContext} url={request.url} />,
+    <NonceProvider value={nonce}>
+      <ServerRouter nonce={nonce} context={routerContext} url={request.url} />
+    </NonceProvider>,
     {
       onError(error: unknown) {
         responseStatusCode = 500;
@@ -25,6 +43,7 @@ export default async function handleRequest(
           console.error(error);
         }
       },
+      nonce,
     },
   );
   shellRendered = true;
@@ -41,3 +60,13 @@ export default async function handleRequest(
     status: responseStatusCode,
   });
 }
+
+// Error Reporting
+// https://reactrouter.com/how-to/error-reporting
+export const handleError: HandleErrorFunction = (error, { request }) => {
+  if (request.signal.aborted) {
+    return;
+  }
+
+  console.error(error instanceof Error ? error.stack : error);
+};

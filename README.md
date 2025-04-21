@@ -28,6 +28,7 @@ react-router-v7-monorepo/
 │       └── ...            # App configs & scripts
 ├── packages/              # Shared packages
 │   ├── db/                # Drizzle ORM + Cloudflare D1 database
+│   ├── shared/            # Common utilities, hooks, and assets
 │   ├── ui/                # shadcn/ui-based reusable UI components
 │   └── tsconfig/          # Centralized TypeScript config presets
 ├── .cursor/               # Cursor editor config & code style rules

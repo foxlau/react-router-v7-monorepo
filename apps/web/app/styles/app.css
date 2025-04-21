@@ -13,13 +13,13 @@
 :root {
   --primary: var(--color-blue-600);
   --primary-foreground: var(--color-blue-50);
-  --ring: var(--color-blue-400);
+  --ring: var(--color-blue-300);
 }
 
 .dark {
   --primary: var(--color-blue-500);
   --primary-foreground: var(--color-blue-50);
-  --ring: var(--color-blue-400);
+  --ring: var(--color-blue-300);
 }
 
 @layer base {

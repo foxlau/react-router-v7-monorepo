@@ -19,6 +19,7 @@
     "@conform-to/zod": "^1.4.0",
     "@workspace/ui": "workspace:*",
     "@workspace/db": "workspace:*",
+    "@workspace/shared": "workspace:*",
     "drizzle-orm": "~0.40.1",
     "isbot": "^5.1.17",
     "lucide-react": "^0.477.0",

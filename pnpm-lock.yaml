@@ -35,6 +35,9 @@ importers:
       '@workspace/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@workspace/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -112,6 +115,25 @@ importers:
       wrangler:
         specifier: ^4.7.2
         version: 4.12.0(@cloudflare/workers-types@4.20250417.0)
+
+  packages/shared:
+    dependencies:
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.14.1
+      '@types/react':
+        specifier: ^19.0.8
+        version: 19.1.2
+      react:
+        specifier: ^19.0.0
+        version: 19.1.0
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.3
 
   packages/tsconfig:
     devDependencies:
@@ -3316,7 +3338,7 @@ packages:
   /@types/conventional-commits-parser@5.0.1:
     resolution: {integrity: sha512-7uz5EHdzz2TqoMfV7ee61Egf5y6NkcO4FB/1iCCQnbeiI1F3xzv3vK5dBCXUCLQgGYS+mUeigK1iKQzvED+QnQ==}
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 22.14.1
     dev: true
 
   /@types/cookie@0.6.0:
