@@ -15,6 +15,7 @@
   },
 
   // D1 databases configuration.
+  // It should be consistent with the d1_databases configuration in packages/db/wrangler.jsonc.
   "d1_databases": [
     {
       "binding": "DB",
@@ -26,6 +27,7 @@
 
   // Environment Variables.
   "vars": {
+    "ENVIRONMENT": "production",
     "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
   },
 
@@ -33,6 +35,7 @@
   "env": {
     "preview": {
       "vars": {
+        "ENVIRONMENT": "preview",
         "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare (Preview)"
       }
     }

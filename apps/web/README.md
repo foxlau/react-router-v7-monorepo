@@ -12,6 +12,10 @@ A modern, production-ready template for building full-stack React applications u
 - 🎉 TailwindCSS for styling
 - 📖 [React Router docs](https://reactrouter.com/)
 
+## Documentation
+
+For detailed setup instructions, configuration options, and advanced usage, refer to the [project documentation](./docs/README.md).
+
 ## Getting Started
 
 ### Installation
@@ -27,6 +31,13 @@ npm install
 Start the development server with HMR:
 
 ```bash
+# Copy the example environment variables file to create a local configuration
+cp .dev.vars.example .dev.vars
+
+# Copy the example Cloudflare Wrangler configuration file to create a local configuration
+cp wrangler.jsonc.example wrangler.jsonc
+
+# Start the development server
 npm run dev
 ```
 

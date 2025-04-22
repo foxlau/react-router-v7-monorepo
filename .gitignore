@@ -48,4 +48,4 @@ coverage
 *.tsbuildinfo
 
 # Cache
-.cache 
+.cache

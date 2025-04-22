@@ -4,12 +4,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  data,
   isRouteErrorResponse,
+  useLoaderData,
 } from "react-router";
 
 import { useNonce } from "@workspace/shared/hooks";
 
 import type { Route } from "./+types/root";
+import { getPublicEnv } from "./lib/env.server";
 import "./styles/app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -29,8 +32,15 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+export async function loader() {
+  return data({
+    ENV: getPublicEnv(),
+  });
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const nonce = useNonce();
+  const { ENV } = useLoaderData<typeof loader>();
 
   return (
     <html lang="en">
@@ -44,6 +54,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
+        <script
+          nonce={nonce}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(ENV)}`,
+          }}
+        />
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
-import { buttonVariants } from "@workspace/ui/components/button";
 import { Github, ListTodo } from "lucide-react";
 import { Link } from "react-router";
+
+import { buttonVariants } from "@workspace/ui/components/button";
+import { env } from "~/lib/env.server";
 import type { Route } from "./+types/home";
 
 export function meta() {
@@ -11,7 +13,10 @@ export function meta() {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
-  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
+  return {
+    message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE,
+    mode: env.ENVIRONMENT,
+  };
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
@@ -20,6 +25,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       <div className="mx-auto w-full max-w-lg p-6">
         <p className="font-mono text-muted-foreground">
           <span className="text-lg">👋</span> {loaderData.message}
+          {" in "}
+          {loaderData.mode} mode
         </p>
         <div className="my-6 flex flex-col gap-2">
           <h1 className="font-semibold text-2xl">React Router v7 Monorepo!</h1>
