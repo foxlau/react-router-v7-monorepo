@@ -6,7 +6,6 @@ import {
   ScrollRestoration,
   data,
   isRouteErrorResponse,
-  useLoaderData,
 } from "react-router";
 
 import { useNonce } from "@workspace/shared/hooks";
@@ -40,7 +39,6 @@ export async function loader() {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const nonce = useNonce();
-  const { ENV } = useLoaderData<typeof loader>();
 
   return (
     <html lang="en">
@@ -54,20 +52,27 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
-        <script
-          nonce={nonce}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-          dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(ENV)}`,
-          }}
-        />
       </body>
     </html>
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default function App({ loaderData }: Route.ComponentProps) {
+  const { ENV } = loaderData;
+  const nonce = useNonce();
+
+  return (
+    <>
+      <Outlet />
+      <script
+        nonce={nonce}
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        dangerouslySetInnerHTML={{
+          __html: `window.ENV = ${JSON.stringify(ENV)}`,
+        }}
+      />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
