@@ -4,15 +4,15 @@ This is a streamlined example demonstrating the use of React Router v7 within a 
 
 ## Features
 
-- pnpm – Monorepo package manager
-- Tailwind CSS v4 – Utility-first CSS framework
-- shadcn/UI – Component library
-- BiomeJS – Code formatting and linting
-- Vite.js – Build tool
-- Lefthook – Git hooks manager
-- Wrangler – Cloudflare development CLI
-- Drizzle ORM – SQL-first ORM
-- Cloudflare D1 – SQLite database for Cloudflare Workers
+- 📦 pnpm – Monorepo package manager
+- 🎨 Tailwind CSS v4 – Utility-first CSS framework
+- 🧩 shadcn/UI – Component library
+- 🔍 BiomeJS – Code formatting and linting
+- ⚡ Vite.js – Build tool
+- 🪝 Lefthook – Git hooks manager
+- 🔧 Wrangler – Cloudflare development CLI
+- 🗃️ Drizzle ORM – SQL-first ORM
+- 🌩️ Cloudflare D1 – SQLite database for Cloudflare Workers
 
 ## Project Structure
 
@@ -58,6 +58,12 @@ pnpm install
 
 ### Development
 ```bash
+# For apps/web, copy configuration files first
+cd apps/web
+cp .dev.vars.example .dev.vars
+cp wrangler.jsonc.example wrangler.jsonc
+cd ../..
+
 # Start all projects
 dpnm dev
 # Start only web app

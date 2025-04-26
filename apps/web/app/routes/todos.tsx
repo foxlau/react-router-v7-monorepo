@@ -23,7 +23,14 @@ export const schema = z.discriminatedUnion("intent", [
   }),
   z.object({
     intent: z.literal("createTodo"),
-    title: z.string().min(1).max(255),
+    title: z
+      .string({ message: "Todo title is required" })
+      .min(10, {
+        message: "Todo title must be at least 10 characters long",
+      })
+      .max(255, {
+        message: "Todo title must be less than 255 characters long",
+      }),
   }),
   z.object({
     intent: z.literal("toggleTodo"),
@@ -120,12 +127,8 @@ export default function TodosRoute({
                 placeholder="Add a todo"
                 {...getInputProps(fields.title, { type: "text" })}
               />
-              <Button
-                type="submit"
-                name="intent"
-                value="createTodo"
-                disabled={isSubmitting}
-              >
+              <input type="hidden" name="intent" value="createTodo" />
+              <Button type="submit" disabled={isSubmitting}>
                 Add
               </Button>
             </div>
