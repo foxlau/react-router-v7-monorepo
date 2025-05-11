@@ -5,12 +5,12 @@ import {
   Scripts,
   ScrollRestoration,
   data,
-  isRouteErrorResponse,
 } from "react-router";
 
 import { useNonce } from "@workspace/shared/hooks";
 
 import type { Route } from "./+types/root";
+import { GeneralErrorBoundary } from "./components/error-boundary";
 import { getPublicEnv } from "./lib/env.server";
 import "./styles/app.css";
 
@@ -75,33 +75,6 @@ export default function App({ loaderData }: Route.ComponentProps) {
   );
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
-  return (
-    <main className="container mx-auto space-y-4 p-4 pt-16">
-      <div className="space-y-2">
-        <h1 className="font-semibold text-2xl">{message}</h1>
-        <p>{details}</p>
-      </div>
-      {stack && (
-        <pre className="w-full overflow-x-auto rounded-lg bg-destructive/10 p-4 text-destructive text-sm">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
-  );
+export function ErrorBoundary() {
+  return <GeneralErrorBoundary />;
 }
