@@ -13,7 +13,6 @@ import { Checkbox } from "@workspace/ui/components/checkbox";
 import { Input } from "@workspace/ui/components/input";
 import { cn } from "@workspace/ui/lib/utils";
 
-import { db } from "~/lib/db.server";
 import type { Route } from "./+types/todos";
 
 export const schema = z.discriminatedUnion("intent", [
@@ -40,16 +39,17 @@ export const schema = z.discriminatedUnion("intent", [
 
 export const meta: Route.MetaFunction = () => [{ title: "Todo List" }];
 
-export async function loader() {
-  const todos = await db.query.todosTable.findMany({
+export async function loader({ context }: Route.LoaderArgs) {
+  const todos = await context.db.query.todosTable.findMany({
     orderBy: (todos, { desc }) => [desc(todos.createdAt)],
   });
   return data({ todos });
 }
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({ request, context }: Route.ActionArgs) {
   const formData = await request.formData();
   const submission = parseWithZod(formData, { schema });
+  const db = context.db;
 
   if (submission.status !== "success") {
     return data(submission.reply(), { status: 400 });
