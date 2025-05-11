@@ -5,6 +5,6 @@
   "license": "MIT",
   "files": ["base.json", "react-library.json", "react-router.json"],
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   }
 }
