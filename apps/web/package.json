@@ -11,7 +11,7 @@
     "deploy:version": "react-router build && wrangler versions upload",
     "deploy:promote": "wrangler versions deploy",
     "start": "wrangler dev --persist-to=../../.wrangler/state",
-    "typegen": "wrangler types --include-runtime=false && react-router typegen",
+    "typegen": "wrangler types && react-router typegen",
     "typecheck": "npm run typegen && tsc --noEmit"
   },
   "dependencies": {
