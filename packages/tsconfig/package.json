@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "files": ["base.json", "react-library.json", "react-router.json"],
+  "files": [
+    "base.json",
+    "react-library.json",
+    "react-router.json"
+  ],
   "devDependencies": {
     "typescript": "^5.8.3"
   }

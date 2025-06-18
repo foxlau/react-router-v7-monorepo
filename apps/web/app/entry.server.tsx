@@ -1,3 +1,4 @@
+import { NonceProvider } from "@workspace/shared/hooks";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 import type {
@@ -6,8 +7,6 @@ import type {
   HandleErrorFunction,
 } from "react-router";
 import { ServerRouter } from "react-router";
-
-import { NonceProvider } from "@workspace/shared/hooks";
 
 export default async function handleRequest(
   request: Request,

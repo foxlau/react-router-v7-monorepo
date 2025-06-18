@@ -1,7 +1,6 @@
+import { buttonVariants } from "@workspace/ui/components/button";
 import { Github, ListTodo } from "lucide-react";
 import { Link } from "react-router";
-
-import { buttonVariants } from "@workspace/ui/components/button";
 import { env } from "~/lib/env.server";
 import type { Route } from "./+types/home";
 

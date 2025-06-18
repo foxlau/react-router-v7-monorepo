@@ -16,12 +16,12 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "drizzle-orm": "~0.43.1"
+    "drizzle-orm": "~0.44.2"
   },
   "devDependencies": {
-    "@types/node": "^22.15.17",
+    "@types/node": "^24.0.3",
     "drizzle-kit": "~0.31.1",
     "typescript": "^5.8.3",
-    "wrangler": "^4.14.4"
+    "wrangler": "^4.20.2"
   }
 }

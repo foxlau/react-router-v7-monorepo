@@ -1,13 +1,12 @@
+import { useNonce } from "@workspace/shared/hooks";
 import {
+  data,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  data,
 } from "react-router";
-
-import { useNonce } from "@workspace/shared/hooks";
 
 import type { Route } from "./+types/root";
 import { GeneralErrorBoundary } from "./components/error-boundary";
@@ -66,7 +65,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
       <Outlet />
       <script
         nonce={nonce}
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: false
         dangerouslySetInnerHTML={{
           __html: `window.ENV = ${JSON.stringify(ENV)}`,
         }}
