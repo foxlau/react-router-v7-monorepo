@@ -64,7 +64,7 @@ function DevErrorDisplay({
 
 export function ProductionErrorDisplay({ message, detail }: ErrorDisplayProps) {
   return (
-    <main className="flex items-center px-6 py-12 sm:py-24">
+    <main className="flex h-screen items-center justify-center p-6">
       <div className="mx-auto flex max-w-sm flex-col items-center gap-4 text-center">
         <div className="rounded-full bg-muted p-3">
           <MehIcon className="size-6" />
