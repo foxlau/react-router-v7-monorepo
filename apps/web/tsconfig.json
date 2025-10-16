@@ -6,6 +6,7 @@
     "types": ["@cloudflare/workers-types", "vite/client", "node"],
     "paths": {
       "~/*": ["./app/*"],
+      "~/workers/*": ["./workers/*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"]
     }
   },

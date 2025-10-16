@@ -2,6 +2,7 @@ import { buttonVariants } from "@workspace/ui/components/button";
 import { Github, ListTodo } from "lucide-react";
 import { Link } from "react-router";
 import { env } from "~/lib/env.server";
+import { adapterContext } from "~/workers/app";
 import type { Route } from "./+types/home";
 
 export function meta() {
@@ -12,8 +13,9 @@ export function meta() {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
+  const { cloudflare } = context.get(adapterContext);
   return {
-    message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE,
+    message: cloudflare.env.VALUE_FROM_CLOUDFLARE,
     mode: env.ENVIRONMENT,
   };
 }

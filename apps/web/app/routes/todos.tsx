@@ -11,7 +11,7 @@ import { ArrowLeft, ListTodoIcon, TrashIcon } from "lucide-react";
 import { useState } from "react";
 import { data, Form, Link, useFetcher, useNavigation } from "react-router";
 import { z } from "zod";
-
+import { adapterContext } from "~/workers/app";
 import type { Route } from "./+types/todos";
 
 export const schema = z.discriminatedUnion("intent", [
@@ -39,7 +39,8 @@ export const schema = z.discriminatedUnion("intent", [
 export const meta: Route.MetaFunction = () => [{ title: "Todo List" }];
 
 export async function loader({ context }: Route.LoaderArgs) {
-  const todos = await context.db.query.todosTable.findMany({
+  const { db } = context.get(adapterContext);
+  const todos = await db.query.todosTable.findMany({
     orderBy: (todos, { desc }) => [desc(todos.createdAt)],
   });
   return data({ todos });
@@ -48,7 +49,7 @@ export async function loader({ context }: Route.LoaderArgs) {
 export async function action({ request, context }: Route.ActionArgs) {
   const formData = await request.formData();
   const submission = parseWithZod(formData, { schema });
-  const db = context.db;
+  const { db } = context.get(adapterContext);
 
   if (submission.status !== "success") {
     return data(submission.reply(), { status: 400 });

@@ -38,6 +38,10 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "suspicious": {
+        "recommended": true,
+        "noUnknownAtRules": "off"
+      },
       "style": {
         "useImportType": "warn",
         "noParameterAssign": "off",

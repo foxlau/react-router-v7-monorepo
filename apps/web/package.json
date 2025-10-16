@@ -12,33 +12,34 @@
     "deploy:promote": "wrangler versions deploy",
     "start": "wrangler dev --persist-to=../../.wrangler/state",
     "typegen": "wrangler types && react-router typegen",
-    "typecheck": "npm run typegen && tsc --noEmit"
+    "typecheck": "tsc",
+    "postinstall": "pnpm run typegen"
   },
   "dependencies": {
-    "@conform-to/react": "^1.8.2",
-    "@conform-to/zod": "^1.8.2",
+    "@conform-to/react": "^1.12.0",
+    "@conform-to/zod": "^1.12.0",
     "@workspace/db": "workspace:*",
     "@workspace/shared": "workspace:*",
     "@workspace/ui": "workspace:*",
-    "drizzle-orm": "~0.44.3",
-    "isbot": "^5.1.28",
-    "lucide-react": "^0.525.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router": "^7.7.0",
+    "drizzle-orm": "~0.44.6",
+    "isbot": "^5.1.31",
+    "lucide-react": "^0.546.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.9.4",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.9.6",
-    "@cloudflare/workers-types": "^4.20250718.0",
-    "@react-router/dev": "^7.7.0",
-    "@tailwindcss/vite": "^4.1.11",
-    "@types/node": "^24.0.14",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.5",
+    "@cloudflare/vite-plugin": "^1.13.13",
+    "@cloudflare/workers-types": "^4.20251011.0",
+    "@react-router/dev": "^7.9.4",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/node": "^24.8.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10",
     "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.25.0"
+    "wrangler": "^4.43.0"
   }
 }

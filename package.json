@@ -19,11 +19,11 @@
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf node_modules && rm pnpm-lock.yaml"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.1.2",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "lefthook": "^1.12.2",
-    "typescript": "^5.8.3"
+    "@biomejs/biome": "^2.2.6",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "lefthook": "^1.13.6",
+    "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@8.14.0",
   "engines": {
